@@ -11,12 +11,12 @@ import Button from "@material-ui/core/Button";
 
 const styles = theme => ({
   root: {
-    width: "70%",
+    width: "100%",
     marginTop: theme.spacing.unit * 3,
     overflowX: "auto"
   },
   table: {
-    minWidth: 300,
+    minWidth: 500,
     fontFamily: "monospace"
   }
 });
@@ -31,28 +31,37 @@ function DisplayRecord(props) {
           <TableRow>
             <TableCell>Name</TableCell>
             <TableCell>Phone No</TableCell>
+            <TableCell>Job Title</TableCell>
+            <TableCell>Experience</TableCell>
+            <TableCell>Salary</TableCell>
             <TableCell>Action</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {props.directoryData.map((row, index) => (
-            <TableRow key={index}>
-              <TableCell component="th" scope="row">
-                {row.uName}
-              </TableCell>
-              <TableCell>{row.uPhone}</TableCell>
-              <TableCell>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  style={{ padding: "3px", fontSize: "13px" }}
-                  onClick={() => props.handleDelete(row.uId)}
-                >
-                  Delete
-                </Button>
-              </TableCell>
-            </TableRow>
-          ))}
+          {localStorage.getItem("employeeData") &&
+            JSON.parse(localStorage.getItem("employeeData")).map(
+              (row, index) => (
+                <TableRow key={index}>
+                  <TableCell component="th" scope="row">
+                    {row.uName}
+                  </TableCell>
+                  <TableCell>{row.uPhone}</TableCell>
+                  <TableCell>{row.uJobTitle}</TableCell>
+                  <TableCell>{row.uExp}</TableCell>
+                  <TableCell>{row.uSalary}</TableCell>
+                  <TableCell>
+                    <Button
+                      variant="contained"
+                      color="secondary"
+                      style={{ padding: "3px", fontSize: "13px" }}
+                      onClick={() => props.handleDelete(index)}
+                    >
+                      Delete
+                    </Button>
+                  </TableCell>
+                </TableRow>
+              )
+            )}
         </TableBody>
       </Table>
     </Paper>

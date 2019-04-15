@@ -23,7 +23,7 @@ function Header(props) {
       <AppBar position="static" className={classes.appbar}>
         <Toolbar>
           <Typography variant="h6" color="inherit">
-            Phone Directory
+            Employee Management System
           </Typography>
         </Toolbar>
       </AppBar>

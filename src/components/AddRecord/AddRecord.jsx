@@ -1,6 +1,6 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
-import Typography from "@material-ui/core/Typography";
+// import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
@@ -16,7 +16,7 @@ function AddRecord(props) {
       <TextField
         id="outlined-full-width"
         label="Name:"
-        placeholder="Enter Name Here"
+        placeholder="Enter name here"
         style={{ margin: 8 }}
         fullWidth
         margin="normal"
@@ -30,7 +30,7 @@ function AddRecord(props) {
       <TextField
         id="outlined-full-width"
         label="Phone:"
-        placeholder="Enter Phone No Here"
+        placeholder="Enter phone no here"
         style={{ margin: 8 }}
         fullWidth
         margin="normal"
@@ -41,7 +41,49 @@ function AddRecord(props) {
         name="uPhone"
         onChange={props.handleChange}
       />
-      <Typography variant="h6" color="inherit" style={{ margin: 8 }}>
+      <TextField
+        id="outlined-full-width"
+        label="Job Title:"
+        placeholder="Enter job title here"
+        style={{ margin: 8 }}
+        fullWidth
+        margin="normal"
+        variant="outlined"
+        InputLabelProps={{
+          shrink: true
+        }}
+        name="uJobTitle"
+        onChange={props.handleChange}
+      />
+      <TextField
+        id="outlined-full-width"
+        label="Total Year of Experience:"
+        placeholder="Enter experience here"
+        style={{ margin: 8 }}
+        fullWidth
+        margin="normal"
+        variant="outlined"
+        InputLabelProps={{
+          shrink: true
+        }}
+        name="uExp"
+        onChange={props.handleChange}
+      />
+      <TextField
+        id="outlined-full-width"
+        label="Salary :"
+        placeholder="Enter salary here"
+        style={{ margin: 8 }}
+        fullWidth
+        margin="normal"
+        variant="outlined"
+        InputLabelProps={{
+          shrink: true
+        }}
+        name="uSalary"
+        onChange={props.handleChange}
+      />
+      {/* <Typography variant="h6" color="inherit" style={{ margin: 8 }}>
         Subscriber to be added:
       </Typography>
       <Typography variant="h6" color="inherit" style={{ margin: 8 }}>
@@ -49,7 +91,7 @@ function AddRecord(props) {
       </Typography>
       <Typography variant="h6" color="inherit" style={{ margin: 8 }}>
         Phone : {props.uPhone}
-      </Typography>
+      </Typography> */}
       <Button
         variant="contained"
         color="secondary"

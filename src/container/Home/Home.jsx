@@ -19,7 +19,7 @@ const styles = {
 class Home extends Component {
   state = {
     addPage: false,
-    directoryData: []
+    employeeData: []
   };
 
   //handle the add and display state.
@@ -39,35 +39,45 @@ class Home extends Component {
 
   //Add new record in state.
   //make copy of existing state and change in that.
-  //After change then assign into DirectoryData.
+  //After change then assign into employeeData.
   _handleAddNew = () => {
-    let newData = [...this.state.directoryData];
+    let newData = [...this.state.employeeData];
     let body = {
-      uId: Date.now(),
       uName: this.state.uName,
-      uPhone: this.state.uPhone
+      uPhone: this.state.uPhone,
+      uJobTitle: this.state.uJobTitle,
+      uSalary: this.state.uSalary,
+      uExp: this.state.uExp
     };
     newData.push(body);
     this.setState({
-      directoryData: newData,
+      employeeData: newData,
       addPage: false,
       uName: "",
-      uPhone: ""
+      uPhone: "",
+      uJobTitle: "",
+      uSalary: "",
+      uExp: ""
     });
+    localStorage.setItem("employeeData", JSON.stringify(newData));
   };
 
   //Delete filter the record by id from existing state data.
   _handleDelete = uId => {
-    let newData = [...this.state.directoryData];
-    newData = newData.filter(directory => directory.uId !== uId);
+    let newData = [...this.state.employeeData];
+    if (uId > -1) {
+      newData.splice(uId, 1);
+    }
     this.setState({
-      directoryData: newData
+      employeeData: newData
     });
+    localStorage.setItem("employeeData", JSON.stringify(newData));
   };
+
   //I am using only function component and 1 parent state component which can handle all data.
   render() {
     const { classes } = this.props;
-    const { addPage, directoryData } = this.state;
+    const { addPage, employeeData } = this.state;
     return (
       <div>
         <Header />
@@ -102,7 +112,7 @@ class Home extends Component {
             />
           ) : (
             <DisplayRecord
-              directoryData={directoryData}
+              employeeData={employeeData}
               handleDelete={uId => this._handleDelete(uId)}
             />
           )}
